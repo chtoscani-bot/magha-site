@@ -73,4 +73,9 @@
 
     revealElements.forEach((element) => observer.observe(element));
   }
+
+  const workshopModule = document.createElement('script');
+  workshopModule.src = 'workshop-section.js';
+  workshopModule.defer = true;
+  document.head.appendChild(workshopModule);
 })();
