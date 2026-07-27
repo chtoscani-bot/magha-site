@@ -1,12 +1,14 @@
 (() => {
   const TICKET_URL = 'https://redtickets.uy/evento/Cambia-Tu-Mente-Crea-Nuevos-Resultados/31703/';
 
-  if (!document.querySelector('link[href="workshop.css"]')) {
-    const stylesheet = document.createElement('link');
-    stylesheet.rel = 'stylesheet';
-    stylesheet.href = 'workshop.css';
-    document.head.appendChild(stylesheet);
-  }
+  ['workshop.css', 'workshop-v2.css'].forEach((href) => {
+    if (!document.querySelector(`link[href="${href}"]`)) {
+      const stylesheet = document.createElement('link');
+      stylesheet.rel = 'stylesheet';
+      stylesheet.href = href;
+      document.head.appendChild(stylesheet);
+    }
+  });
 
   const header = document.querySelector('.site-header');
   const hero = document.querySelector('.hero');
@@ -17,6 +19,12 @@
   if (!header || !hero) return;
 
   document.body.classList.add('has-featured-workshop');
+
+  // Remove the hero phrase that does not belong in the final narrative.
+  Array.from(document.querySelectorAll('.art-slide')).forEach((slide) => {
+    const text = slide.textContent || '';
+    if (text.includes('La capacidad') || text.includes('The capability')) slide.remove();
+  });
 
   if (siteNav && !siteNav.querySelector('a[href="#workshop"]')) {
     const workshopNavLink = document.createElement('a');
@@ -33,7 +41,7 @@
     navCta.href = '#workshop';
     navCta.removeAttribute('target');
     navCta.removeAttribute('rel');
-    navCta.innerHTML = '<span data-copy="es">Taller 11–12 set.</span><span data-copy="en">Workshop Sep 11–12</span>';
+    navCta.innerHTML = '<span data-copy="es">Ver taller</span><span data-copy="en">View workshop</span>';
   }
 
   const announcement = document.createElement('div');
@@ -42,8 +50,8 @@
     <div class="container workshop-announcement__inner">
       <div class="workshop-announcement__message">
         <span class="workshop-announcement__dot" aria-hidden="true"></span>
-        <strong data-copy="es">11 y 12 de setiembre · Punta Carretas</strong>
-        <strong data-copy="en">September 11–12 · Punta Carretas</strong>
+        <strong data-copy="es">Taller abierto · 11 y 12 de setiembre</strong>
+        <strong data-copy="en">Open workshop · September 11–12</strong>
         <span class="workshop-announcement__title" data-copy="es">Cambia tu mente, crea nuevos resultados</span>
         <span class="workshop-announcement__title" data-copy="en">Change Your Mind, Create New Results</span>
       </div>
@@ -77,16 +85,29 @@
         <div class="featured-workshop__poster">
           <div class="featured-workshop__poster-index">
             <span>OPEN / 01</span>
-            <span>11—12 SEP 2026</span>
+            <span>MONTEVIDEO</span>
+          </div>
+
+          <div class="featured-workshop__event">
+            <div class="featured-workshop__date">
+              <strong>11—12</strong>
+              <span data-copy="es">SETIEMBRE 2026</span>
+              <span data-copy="en">SEPTEMBER 2026</span>
+            </div>
+            <div class="featured-workshop__capacity">
+              <strong>20</strong>
+              <span data-copy="es">CUPOS</span>
+              <span data-copy="en">SPOTS</span>
+            </div>
           </div>
 
           <div class="featured-workshop__poster-title">
-            <small data-copy="es">TALLER PRESENCIAL · MONTEVIDEO</small>
-            <small data-copy="en">IN-PERSON WORKSHOP · MONTEVIDEO</small>
+            <small data-copy="es">TALLER PRESENCIAL ABIERTO</small>
+            <small data-copy="en">OPEN IN-PERSON WORKSHOP</small>
             <strong data-copy="es">CAMBIA<br>TU MENTE.</strong>
             <strong data-copy="en">CHANGE<br>YOUR MIND.</strong>
-            <em data-copy="es">CREA NUEVOS<br>RESULTADOS.</em>
-            <em data-copy="en">CREATE NEW<br>RESULTS.</em>
+            <span class="featured-workshop__results" data-copy="es">CREA NUEVOS<br>RESULTADOS.</span>
+            <span class="featured-workshop__results" data-copy="en">CREATE NEW<br>RESULTS.</span>
           </div>
 
           <div class="featured-workshop__poster-foot">
@@ -96,8 +117,14 @@
         </div>
 
         <div class="featured-workshop__content">
-          <p class="eyebrow" data-copy="es">EXPERIENCIA ABIERTA · 11 Y 12 DE SETIEMBRE</p>
-          <p class="eyebrow" data-copy="en">OPEN EXPERIENCE · SEPTEMBER 11–12</p>
+          <div class="featured-workshop__date-banner">
+            <strong data-copy="es">11 y 12 de setiembre de 2026</strong>
+            <strong data-copy="en">September 11–12, 2026</strong>
+            <span>9:00—17:00</span>
+          </div>
+
+          <p class="eyebrow" data-copy="es">TALLER PRESENCIAL ABIERTO · SOLO 20 CUPOS</p>
+          <p class="eyebrow" data-copy="en">OPEN IN-PERSON WORKSHOP · ONLY 20 SPOTS</p>
 
           <h2 data-copy="es">Entender el cambio es el comienzo. <em>Entrenarlo</em> es lo que produce resultados.</h2>
           <h2 data-copy="en">Understanding change is the beginning. <em>Training it</em> is what produces results.</h2>
@@ -134,16 +161,16 @@
 
           <div class="featured-workshop__details">
             <div>
-              <small data-copy="es">FECHA</small><small data-copy="en">DATE</small>
-              <strong data-copy="es">Viernes 11 y sábado 12 de setiembre</strong><strong data-copy="en">Friday, September 11 & Saturday, September 12</strong>
-            </div>
-            <div>
-              <small data-copy="es">HORARIO</small><small data-copy="en">TIME</small>
-              <strong data-copy="es">De 9:00 a 17:00</strong><strong data-copy="en">9:00 am–5:00 pm</strong>
+              <small data-copy="es">CUPOS</small><small data-copy="en">CAPACITY</small>
+              <strong data-copy="es">Solo 20 personas</strong><strong data-copy="en">Only 20 people</strong>
             </div>
             <div>
               <small data-copy="es">LUGAR</small><small data-copy="en">LOCATION</small>
-              <strong data-copy="es">Punta Carretas · Montevideo</strong><strong data-copy="en">Punta Carretas · Montevideo</strong>
+              <strong>Punta Carretas · Montevideo</strong>
+            </div>
+            <div>
+              <small data-copy="es">FORMATO</small><small data-copy="en">FORMAT</small>
+              <strong data-copy="es">Presencial · 2 días</strong><strong data-copy="en">In person · 2 days</strong>
             </div>
           </div>
 
@@ -170,8 +197,8 @@
   const mobileBar = document.createElement('div');
   mobileBar.className = 'workshop-mobile-bar';
   mobileBar.innerHTML = `
-    <span data-copy="es">11–12 set. · Punta Carretas</span>
-    <span data-copy="en">Sep 11–12 · Punta Carretas</span>
+    <span data-copy="es">Taller abierto · 11–12 set.</span>
+    <span data-copy="en">Open workshop · Sep 11–12</span>
     <a href="${TICKET_URL}" target="_blank" rel="noopener">
       <span data-copy="es">Entradas</span><span data-copy="en">Tickets</span> ↗
     </a>`;
