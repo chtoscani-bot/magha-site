@@ -1,5 +1,5 @@
 (() => {
-  const TICKET_URL = window.MAGHA_TICKET_URL || 'https://tickantel.com.uy/';
+  const TICKET_URL = 'https://redtickets.uy/evento/Cambia-Tu-Mente-Crea-Nuevos-Resultados/31703/';
 
   if (!document.querySelector('link[href="workshop.css"]')) {
     const stylesheet = document.createElement('link');
@@ -33,7 +33,7 @@
     navCta.href = '#workshop';
     navCta.removeAttribute('target');
     navCta.removeAttribute('rel');
-    navCta.innerHTML = '<span data-copy="es">Ver taller</span><span data-copy="en">View workshop</span>';
+    navCta.innerHTML = '<span data-copy="es">Taller 11–12 set.</span><span data-copy="en">Workshop Sep 11–12</span>';
   }
 
   const announcement = document.createElement('div');
@@ -42,8 +42,8 @@
     <div class="container workshop-announcement__inner">
       <div class="workshop-announcement__message">
         <span class="workshop-announcement__dot" aria-hidden="true"></span>
-        <strong data-copy="es">Próxima experiencia abierta en Montevideo</strong>
-        <strong data-copy="en">Next open experience in Montevideo</strong>
+        <strong data-copy="es">11 y 12 de setiembre · Punta Carretas</strong>
+        <strong data-copy="en">September 11–12 · Punta Carretas</strong>
         <span class="workshop-announcement__title" data-copy="es">Cambia tu mente, crea nuevos resultados</span>
         <span class="workshop-announcement__title" data-copy="en">Change Your Mind, Create New Results</span>
       </div>
@@ -77,12 +77,12 @@
         <div class="featured-workshop__poster">
           <div class="featured-workshop__poster-index">
             <span>OPEN / 01</span>
-            <span>MONTEVIDEO</span>
+            <span>11—12 SEP 2026</span>
           </div>
 
           <div class="featured-workshop__poster-title">
-            <small data-copy="es">TALLER PRESENCIAL</small>
-            <small data-copy="en">IN-PERSON WORKSHOP</small>
+            <small data-copy="es">TALLER PRESENCIAL · MONTEVIDEO</small>
+            <small data-copy="en">IN-PERSON WORKSHOP · MONTEVIDEO</small>
             <strong data-copy="es">CAMBIA<br>TU MENTE.</strong>
             <strong data-copy="en">CHANGE<br>YOUR MIND.</strong>
             <em data-copy="es">CREA NUEVOS<br>RESULTADOS.</em>
@@ -96,8 +96,8 @@
         </div>
 
         <div class="featured-workshop__content">
-          <p class="eyebrow" data-copy="es">EXPERIENCIA ABIERTA</p>
-          <p class="eyebrow" data-copy="en">OPEN EXPERIENCE</p>
+          <p class="eyebrow" data-copy="es">EXPERIENCIA ABIERTA · 11 Y 12 DE SETIEMBRE</p>
+          <p class="eyebrow" data-copy="en">OPEN EXPERIENCE · SEPTEMBER 11–12</p>
 
           <h2 data-copy="es">Entender el cambio es el comienzo. <em>Entrenarlo</em> es lo que produce resultados.</h2>
           <h2 data-copy="en">Understanding change is the beginning. <em>Training it</em> is what produces results.</h2>
@@ -134,23 +134,23 @@
 
           <div class="featured-workshop__details">
             <div>
-              <small data-copy="es">FORMATO</small><small data-copy="en">FORMAT</small>
-              <strong data-copy="es">Presencial · Montevideo</strong><strong data-copy="en">In person · Montevideo</strong>
+              <small data-copy="es">FECHA</small><small data-copy="en">DATE</small>
+              <strong data-copy="es">Viernes 11 y sábado 12 de setiembre</strong><strong data-copy="en">Friday, September 11 & Saturday, September 12</strong>
             </div>
             <div>
-              <small data-copy="es">DURACIÓN</small><small data-copy="en">DURATION</small>
-              <strong data-copy="es">2 días · 16 horas</strong><strong data-copy="en">2 days · 16 hours</strong>
+              <small data-copy="es">HORARIO</small><small data-copy="en">TIME</small>
+              <strong data-copy="es">De 9:00 a 17:00</strong><strong data-copy="en">9:00 am–5:00 pm</strong>
             </div>
             <div>
-              <small data-copy="es">INCLUYE</small><small data-copy="en">INCLUDES</small>
-              <strong data-copy="es">Materiales y práctica guiada</strong><strong data-copy="en">Materials and guided practice</strong>
+              <small data-copy="es">LUGAR</small><small data-copy="en">LOCATION</small>
+              <strong data-copy="es">Punta Carretas · Montevideo</strong><strong data-copy="en">Punta Carretas · Montevideo</strong>
             </div>
           </div>
 
           <div class="featured-workshop__actions">
             <a class="button featured-workshop__ticket" href="${TICKET_URL}" target="_blank" rel="noopener">
-              <span data-copy="es">Comprar entrada en TickAntel</span>
-              <span data-copy="en">Buy ticket on TickAntel</span>
+              <span data-copy="es">Comprar entrada en RedTickets</span>
+              <span data-copy="en">Buy ticket on RedTickets</span>
               <span aria-hidden="true">↗</span>
             </a>
             <a class="featured-workshop__corporate" href="#neuroscience">
@@ -160,8 +160,8 @@
             </a>
           </div>
 
-          <p class="featured-workshop__note" data-copy="es">Venta y emisión de entradas gestionadas por TickAntel.</p>
-          <p class="featured-workshop__note" data-copy="en">Ticket sales and issuance are managed by TickAntel.</p>
+          <p class="featured-workshop__note" data-copy="es">Venta y emisión de entradas gestionadas por RedTickets.</p>
+          <p class="featured-workshop__note" data-copy="en">Ticket sales and issuance are managed by RedTickets.</p>
         </div>
       </div>
     </div>`;
@@ -170,8 +170,8 @@
   const mobileBar = document.createElement('div');
   mobileBar.className = 'workshop-mobile-bar';
   mobileBar.innerHTML = `
-    <span data-copy="es">Taller abierto en Montevideo</span>
-    <span data-copy="en">Open workshop in Montevideo</span>
+    <span data-copy="es">11–12 set. · Punta Carretas</span>
+    <span data-copy="en">Sep 11–12 · Punta Carretas</span>
     <a href="${TICKET_URL}" target="_blank" rel="noopener">
       <span data-copy="es">Entradas</span><span data-copy="en">Tickets</span> ↗
     </a>`;
