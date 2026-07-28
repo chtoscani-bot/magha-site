@@ -3,9 +3,33 @@
   const languageButtons = document.querySelectorAll('[data-set-language]');
   const menuToggle = document.querySelector('.menu-toggle');
   const menu = document.querySelector('#site-menu');
-  const menuLinks = document.querySelectorAll('#site-menu a');
   const slides = Array.from(document.querySelectorAll('.art-slide'));
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const onProgramPage = window.location.pathname.endsWith('cambia-tu-mente.html');
+  if (!onProgramPage) {
+    const mainNav = document.querySelector('.site-nav');
+    if (mainNav && !mainNav.querySelector('a[href="cambia-tu-mente.html"]')) {
+      const workshopLink = document.createElement('a');
+      workshopLink.href = 'cambia-tu-mente.html';
+      workshopLink.innerHTML = '<span data-copy="es">Talleres</span><span data-copy="en">Workshops</span>';
+      const aboutLink = mainNav.querySelector('a[href="#about"]');
+      mainNav.insertBefore(workshopLink, aboutLink || null);
+    }
+
+    const programCta = document.querySelector('.neuroscience .text-link');
+    if (programCta) {
+      programCta.href = 'cambia-tu-mente.html';
+      programCta.removeAttribute('target');
+      programCta.removeAttribute('rel');
+      const spanish = programCta.querySelector('[data-copy="es"]');
+      const english = programCta.querySelector('[data-copy="en"]');
+      if (spanish) spanish.textContent = 'Conocer el programa';
+      if (english) english.textContent = 'Explore the program';
+    }
+  }
+
+  const menuLinks = document.querySelectorAll('#site-menu a');
 
   function setLanguage(language) {
     const selected = language === 'en' ? 'en' : 'es';
