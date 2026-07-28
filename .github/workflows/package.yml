@@ -1,0 +1,31 @@
+name: Build Netlify upload package
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Create clean package
+        run: |
+          mkdir -p deploy/assets
+          cp index.html cambia-tu-mente.html styles.css script.js favicon.svg deploy/
+          cp assets/magha-logo.svg assets/ncs-certified.svg deploy/assets/
+      - name: Upload package
+        uses: actions/upload-artifact@v4
+        with:
+          name: magha-netlify-upload
+          path: deploy
+          include-hidden-files: false
+      - name: Signal package is ready
+        run: |
+          echo "Package artifact created successfully. Intentional stop so the run is easy to locate."
+          exit 1
